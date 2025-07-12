@@ -1,7 +1,7 @@
 import argparse,re,os
 from collections import defaultdict
 
-ALLOWED_GATES = {"AND", "NAND", "OR", "XOR", "NXOR", "NOT"}
+ALLOWED_GATES = {"AND", "NAND", "OR","NOR","XOR", "NXOR", "NOT"}
 GATE_STYLE = 'verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;'
 WIRE_STYLE_025 = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;'
 WIRE_STYLE_075 = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;'
@@ -22,6 +22,8 @@ def get_gate_style(logic_type):
         return f"{base}operation=and;negating=1;negSize=0.15;"
     if logic_type == "OR":
         return f"{base}operation=or;"
+    if logic_type == "NOR":
+        return f"{base}operation=or;negating=1;negSize=0.15;"
     if logic_type == "XOR":
         return f"{base}operation=xor;"
     if logic_type == "NXOR":
@@ -39,7 +41,7 @@ def parse_verilog_netlist(verilog_str):
     net_to_gate_output = dict()
     gate_inputs_map = dict()
 
-    for line in verilog_str.splitlines():
+    for i,line in enumerate(verilog_str.splitlines()):
         line = line.strip()
         if not line or line.startswith('//') or line.startswith("module") or line.startswith("endmodule"):
             continue
@@ -50,23 +52,31 @@ def parse_verilog_netlist(verilog_str):
         elif line.startswith("wire"):
             wires += re.findall(r'\w+', line)[1:]
         else:
-            m = re.match(r'(\w+)\s+(\w+)\s*\(([^)]+)\);', line)
+            gate_type_upper = ""
+            m = re.match(r'^\s*(\w+)\s+(\w+)\s*\(([^)]+)\);', line)
             if m:
                 gate_type, gate_name, ports = m.groups()
-                gate_type_upper = gate_type.upper()
-                if gate_type_upper in ALLOWED_GATES:
-                    port_list = [p.strip() for p in ports.split(',')]
-                    output_net = port_list[0]
-                    input_nets = port_list[1:]
-                    gates.append({
+            else:
+                m2 = re.match(r'^\s*(\w+)\s*\(([^)]+)\);', line)
+                if m2:
+                    gate_type, ports = m2.groups()
+                    gate_name = f"gate_{gate_type.lower()}_{i}"
+                else:
+                    continue
+            gate_type_upper = gate_type.upper()
+            if gate_type_upper in ALLOWED_GATES:
+                port_list = [p.strip() for p in ports.split(',')]
+                output_net = port_list[0]
+                input_nets = port_list[1:]
+                gates.append({
                         "type": gate_type_upper,
                         "name": gate_name,
                         "output": output_net,
                         "inputs": input_nets
                     })
-                    gate_inputs_map[gate_name] = input_nets
-                    net_to_gate_output[output_net] = gate_name
-                    gate_count[gate_type_upper] += 1
+                gate_inputs_map[gate_name] = input_nets
+                net_to_gate_output[output_net] = gate_name
+                gate_count[gate_type_upper] += 1
 
     gate_level = dict()
     unresolved = set(g["name"] for g in gates)
@@ -207,7 +217,7 @@ if __name__ == "__main__":
             with open(vg_file, "r") as f:
                 content = f.read()
             result = parse_verilog_netlist(content)
-
+            print(result)
             # Get base name (remove path and .vg extension)
             base_name = os.path.splitext(os.path.basename(vg_file))[0]
             write_to_xml(base_name, result)

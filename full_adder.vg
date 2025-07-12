@@ -1,0 +1,11 @@
+module full_adder (sum, carry, a, b, cin);
+  input a, b, cin;
+  output sum, carry;
+  wire n1, n2;
+  wire n3;
+    nor (n1, a, b);
+  nor g2 (sum, n1, cin);
+    and (n2, a, b);
+  and g4 (n3, n1, cin);
+  or  g5 (carry, n2, n3);
+endmodule

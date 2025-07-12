@@ -1,0 +1,76 @@
+<mxfile>  
+<diagram name="full_adder">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+          <mxCell id="0_0" value="a" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+            <mxGeometry x="0" y="0" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_1" value="b" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+            <mxGeometry x="0" y="50" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_2" value="cin" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+            <mxGeometry x="0" y="100" width="30" height="30" as="geometry" />
+          </mxCell>
+
+
+          <mxCell id="0_3" value="sum" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+            <mxGeometry x="210" y="0" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_4" value="carry" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+            <mxGeometry x="210" y="50" width="30" height="30" as="geometry" />
+          </mxCell>
+
+
+          <mxCell id="0_5" value="gate_nor_5" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=or;negating=1;negSize=0.15;" vertex="1" parent="1">
+            <mxGeometry x="50" y="5" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_6" value="g2" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=or;negating=1;negSize=0.15;" vertex="1" parent="1">
+            <mxGeometry x="100" y="5" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_7" value="gate_and_7" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=and;" vertex="1" parent="1">
+            <mxGeometry x="50" y="75" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_8" value="g4" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=and;" vertex="1" parent="1">
+            <mxGeometry x="100" y="75" width="30" height="30" as="geometry" />
+          </mxCell>
+          <mxCell id="0_9" value="g5" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=or;" vertex="1" parent="1">
+            <mxGeometry x="150" y="5" width="30" height="30" as="geometry" />
+          </mxCell>
+
+
+          <mxCell id="0_gate_nor_5_0_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_0" target="0_5">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_gate_nor_5_1_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_1" target="0_5">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g2_0_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_5" target="0_6">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g2_1_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_2" target="0_6">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_gate_and_7_0_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_0" target="0_7">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_gate_and_7_1_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_1" target="0_7">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g4_0_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_5" target="0_8">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g4_1_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_2" target="0_8">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g5_0_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_7" target="0_9">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+          <mxCell id="0_g5_1_wire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="0_8" target="0_9">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+</root>
+</mxGraphModel>
+</diagram>
+</mxfile>
