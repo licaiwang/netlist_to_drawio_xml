@@ -23,7 +23,7 @@
           </mxCell>
 
 
-          <mxCell id="0_5" value="gate_not_6" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.inverter_2;" vertex="1" parent="1">
+          <mxCell id="0_5" value="gate_not_6" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate.inverter_2;" vertex="1" parent="1">
             <mxGeometry x="50" y="5" width="30" height="30" as="geometry" />
           </mxCell>
           <mxCell id="0_6" value="gate_nor_7" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;operation=or;negating=1;negSize=0.15;" vertex="1" parent="1">

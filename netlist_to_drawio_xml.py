@@ -2,7 +2,7 @@ import argparse,re,os
 from collections import defaultdict
 
 ALLOWED_GATES = {"AND", "NAND", "OR","NOR","XOR", "NXOR", "NOT"}
-GATE_STYLE = 'verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates.logic_gate;'
+GATE_STYLE = 'verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.logic_gates'
 WIRE_STYLE_025 = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;'
 WIRE_STYLE_075 = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;'
 GATE_SETTING = 'vertex="1" parent="1"'
@@ -17,19 +17,19 @@ def get_max_gate_level(gates):
 def get_gate_style(logic_type):
     base = GATE_STYLE
     if logic_type == "AND":
-        return f"{base}operation=and;"
+        return f"{base}.logic_gate;operation=and;"
     if logic_type == "NAND":
-        return f"{base}operation=and;negating=1;negSize=0.15;"
+        return f"{base}.logic_gate;operation=and;negating=1;negSize=0.15;"
     if logic_type == "OR":
-        return f"{base}operation=or;"
+        return f"{base}.logic_gate;operation=or;"
     if logic_type == "NOR":
-        return f"{base}operation=or;negating=1;negSize=0.15;"
+        return f"{base}.logic_gate;operation=or;negating=1;negSize=0.15;"
     if logic_type == "XOR":
-        return f"{base}operation=xor;"
+        return f"{base}.logic_gate;operation=xor;"
     if logic_type == "NXOR":
-        return f"{base}operation=xor;negating=1;negSize=0.15;"
+        return f"{base}.logic_gate;operation=xor;negating=1;negSize=0.15;"
     if logic_type == "NOT":
-        return f"{base}operation=inverter_2;negating=1;negSize=0.15;"
+        return f"{base}.inverter_2;"
     return base
 
 def parse_verilog_netlist(verilog_str):
